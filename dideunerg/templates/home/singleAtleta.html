@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Atleta.::{{ atletas.nombre }} {{ atletas.apellido }}::. {% endblock %}
+{% block content %}
+<h3 align="center">Datos del Atleta</h3>
+<img src="/media/{{ atletas.foto }}" width="150px" height="150"align="right">&nbsp;&nbsp;&nbsp;&nbsp;
+<p>Nombre Y Apellidos: {{ atletas.nombre }} {{atletas.apellido}}</p><br>
+<p>Cedula: {{atletas.cedula }}</p><br>
+<p>Telefono: {{ atletas.telefono }} </p><br>
+<p>Direccion: {{ atletas.direccion }}</p><br>
+<p>Carrera: {{ atletas.carrera }}</p><br>
+<p>Cohorte: {{ atletas.cohorte }}</p><br>
+<!--<table border="3">
+    <tr><th>Datos Del Atleta</th></tr>
+    <tr>
+        <td><img src="/media/{{ atletas.foto }}" width="150px" height="150"></td>
+        <td><p>Nombre Y Apellidos:</p> {{ atletas.nombre }} {{atletas.apellido}}</td>
+        <td><p>Cedula:</p> {{atletas.cedula }}</td>
+    </tr>
+</table>-->
+==================================-DIRECCION DE DEPORTE UNERG-==================================
+<a href="javascript:window.history.go(-1);" class="btn btn-primary">Regresar a lista de Atletas</a>
+{% endblock %}

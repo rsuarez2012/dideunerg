@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %} Atletas {% endblock %}
+{% block content %}
+<br>
+{% if user.is_authenticated %}
+<a href="/add/atletas" class="btn btn-info">Agregar Atleta</a>
+
+{% endif %}
+<br>
+{% if atletas %}
+	<!--<table class="table table-hover table-bordered">-->
+	<table class="table table-striped">
+		<theader>
+			<tr>
+				<th>#</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Cedula</th>
+				<th>Telefono</th>
+				<th>Direccion</th>
+				<th>Cohorte</th>
+				<th></th>
+				<th>Acciones</th>
+                <th></th>
+			</tr>
+		</theader>
+    {% for p in atletas %}
+    <tbody>
+    	<tr>
+		<td>{{p.id}}</td>
+    		<td>{{p.nombre}}</td>
+    		<td>{{p.apellido}}</td>
+    		<td>{{p.cedula}}</td>
+    		<td>{{p.telefono}}</td>
+    		<td>{{p.direccion}}</td>
+    		<td>{{p.cohorte}}</td>
+    		<td><a class="btn" href="/eliminar/{{p.id}}/"><li class="icon-remove"></li>Eliminar</a></td>
+    		<td><a class="btn" href="/editar/atleta/{{p.id}}/"><li class="icon-edit"></li>Editar</a></td>
+            <td><a class="btn" href="/atleta/{{p.id}}/"><li class="icon-search"></li>Ver</a></td>
+    	</tr>
+    </tbody>
+        <!--<p><a href="/producto/{{p.id}}/">{{p.nombre}}</a></p>-->
+    {% endfor %}
+    </table>
+{% else %}
+    <h2>No hay Atletas activos</h2>
+{% endif %}
+<br>
+{% if atletas %}
+    <div class="pagination">
+    <ul>
+		<li><a href="/atletas/page/1"> << </a></li>
+	{% if atletas.has_previous %}
+		<li><a href="/atletas/page/{{atletas.previous_page_number }}/"> Prev </a></li>
+	{% else %}
+		<li><a href="#"> Prev </a></li>
+	{% endif %}
+	{% if atletas.has_next %}
+		<li><a href="/atletas/page/{{atletas.next_page_number }}/"> Next </a></li>
+	{% else %}
+		<li><a href="#"> Next </a></li>
+	{% endif %}
+		<li><a href="/atletas/page/{{atletas.paginator.num_pages }} "> >> </a><li>
+	</ul>
+	</div>
+	<h4>  Pagina {{ atletas.number }} de {{atletas.paginator.num_pages }}</h4>
+{% endif %}
+{% endblock %}
+

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %} Direccion de Deportes {% endblock %}
+{% block content %} <br><h2>Sistema de Registro de Atletas y Entrenadores de la UNERG</h2>
+{% if user.is_authenticated %}
+	<p>Bienvenido - {{ user.username }}</p>
+	{% if perfil.get_profile.foto %}
+		<img src="/media/{{ perfil.get_profile.foto }}" width="100px" heigth="100px" />
+	{% endif %}
+	
+{% endif %}
+{% endblock %}
+

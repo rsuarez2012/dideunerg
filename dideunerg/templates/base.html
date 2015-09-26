@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>{% block title %} Titulo Base {% endblock %}</title>
+	<!--{% block css %} <link rel="stylesheet" href="/media/css/estilo.css">{% endblock %}-->
+	<link rel="stylesheet" href="/media/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="/media/bootstrap/css/bootstrap-responsive.css">
+	<script type="text/javascript" src="/media/js/jquery.js"></script>
+	<script type="text/javascript" src="/media/bootstrap/js/bootstrap.js"></script>
+	<style type="text/css">
+		body{
+			padding: 60px;
+			padding-bottom: 40px;
+		}
+		.sidebar-nav{
+			padding: 9px 0;
+		}
+
+	</style>
+	<script type="text/javascript">
+	/*$(document).on('ready',function(){
+		$.ajax({
+			type:"GET",
+			contentType:"application/json; charset=utf-8",
+			dateType:"json",
+			url:"/ws/productos/",
+			success:function(response){
+				var i = (response.length-1)-2;
+				for (i;i<=(response.length-1);i++){
+					$('#ProductosNuevos').append("<li>"+response[i].fields.nombre+"</li>");
+				}
+			}
+
+		});
+	});*/
+	</script>
+    <script type="text/javascript">
+        $(document).on('ready',function(){
+              $.ajax({
+                  type:"GET",
+                  contentType:"application/json; charset=utf-8",
+                  dateType:"json",
+                  url:"/ws/atletas/",
+                  success:function(response){
+                          var i = (response.length-1)-2;
+                          for(i;i<=(response.length-1);i++){
+                              $('#ProductosNuevos').append("<li>"+response[i].fields.nombre+"</li>");
+                          }    
+                  }
+              });
+        });
+    </script>
+    <!--<script type="text/javascript">
+    $(document).on("ready",function() {
+    	alert('funciona jquery');
+    })
+    </script>-->
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<a class="brand" href="">R.E.A.UNERG</a>
+			{% if user.is_authenticated %}
+				<p class="navbar-text pull-right">Bienvenido {{ user.username }}</p>
+			{% endif %}
+			<ul class="nav nav-pills">
+				<li class="dropdown"><a href="/">Inicio</a></li>
+				{% if user.is_authenticated %}
+				<li><a href="/atletas/page/1/">Atletas</a></li>
+				<li><a href="/entrenadores/page/1/">Entrenadores</a></li>
+				<li><a href="/logout/">Cerrar Sesion</a></li>
+				{% else %}
+				<li><a href="/login/">Login</a></li>
+				{% endif %}
+			</ul>
+
+			<!--<ul class="nav nav-pills">
+				<li class="dropdown"><a href="">Inicio</a></li>
+				<li><a href="/productos/page/1/">Productos</a></li>
+				<!--<li><a href="">Contacto</a></li>-->
+				<!--<li><a href="">Acerca de.....</a></li>
+				{% if user.is_authenticated %}
+				<li><a href="">Cerrar Sesion</a></li>
+				{% else %}
+				<li><a href="">Login</a></li>
+				{% endif %}
+			</ul>-->
+		</div>
+	</div><!--menu navbar-->
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span10">
+				<div class="hero-unit">
+					{% block content %}
+
+					{% endblock %}
+				</div>
+			</div>
+			<div class="span2">
+				<div class="well sidebar-nav">
+					<!--<ul class="nav nav-list">
+						<li class="nav-header">Mi Carrito</li>
+						<br><li align="justify">Carrito de super</li>
+					</ul>-->
+				</div>
+
+			</div>
+			<div class="span2">
+				<div class="well sidebar-nav">
+						<h4 class="nav-header">Atletas Agregados</h4>
+					<!--<ul class="nav nav-list" id="ProductosNuevos">
+						<li class="nav-header">Nuevos productos</li>
+						
+					</ul>-->
+				</div>
+				<!--<img src="/media/images/descarga.jpg" width="150px" heigth="150px">-->
+
+			
+		</div>
+	</div>
+	<hr>
+	<footer>
+		<p>&copy: sitio desarrollado por Ing Raul suarez</p>
+	</footer>
+<!--<header>
+		<img src="/media/images/descarga.jpg" width="150px" heigth="" />
+		<h1>Proyecto Demo (Ventas de Productos)</h1>-->
+	<!--<nav>
+
+	</nav>
+</header>
+<section>
+
+</section>-->
+</body>
+</html>

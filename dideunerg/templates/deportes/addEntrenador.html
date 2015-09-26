@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %} Agregar Entrenador {% endblock %}
+{% block content %}
+<h3 align="center">Agregar datos para nuevo Entrenador</h3>
+<form action="." method="POST" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <br>
+    <table class="table table-hover table-bordered">
+        {% for a in form %}
+        <tr>
+            <th>
+                <b>{{a.label}}:</b>
+            </th>
+            <td>
+                 {{a}}
+             </td>
+         </tr>
+         {% endfor %}
+     </table>
+    <br>
+	<input type="submit" value="Grabar">
+	<input type="reset" value="Limpiar">
+</form>
+<!--	    {{form.as_p }}-->
+<br>
+	{{ informacion }}
+<br>
+==================================-DIRECCION DE DEPORTE UNERG-==================================
+<a href="/entrenadores/"  class="btn btn-danger">Regresar</a> 
+{% endblock %}

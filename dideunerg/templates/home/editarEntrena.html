@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Entrenador.::{{ entrenadores.nombre }} {{ entrenadores.apellido }}::. {% endblock %}
+{% block content %}
+<h3 align="center">Datos del Entrenador</h3>
+<form method="POST" action="">
+    {% csrf_token %}
+    <br>
+    <!--{{form.as_p}}-->
+<table class="table table-hover table-bordered">
+
+    {% for f in form %}
+<tr>
+    <th>
+        <b>{{ f.label }}:</b>
+    </th>
+    <td>
+        {{ f }}	
+    </td>
+</tr>
+    {% endfor %}
+</table>
+    <!--<table>
+        {% for f in form %}
+        <tr><th>{{f.label}}:</th><td>{{f}}</td></tr>
+        <tr><th>{{f.label}}:</th><td>{{f.apellidos}}</td></tr>
+    </table>
+        <br>
+        {% endfor %}-->
+
+==================================-DIRECCION DE DEPORTE UNERG-==================================
+    <input type="submit" value="Guardar">
+</form>
+<!--<table border="3">
+    <tr><th>Datos Del Atleta</th></tr>
+    <tr>
+        <td><img src="/media/{{ atletas.foto }}" width="150px" height="150"></td>
+        <td><p>Nombre Y Apellidos:</p> {{ atletas.nombre }} {{atletas.apellido}}</td>
+        <td><p>Cedula:</p> {{atletas.cedula }}</td>
+    </tr>
+</table>-->
+
+<!--<a href="javascript:window.history.go(-1);" class="btn btn-primary">-->
+<a href="/entrenadores/page/1/" class="btn btn-primary">Regresar a lista de Atletas</a>
+{% endblock %}
+<!--table class="tabla">
+            <tr id="nombre_columna"><th>RUN</th><th>Nombre</th><th>Apellido Paterno</th><th>Apellido Materno</th><th>Telefono</th><th>Celular</th><th>Mail</th></tr>
+
+{% for cliente in clientes %}
+<tr><td>{{ cliente.rut }}</td>
+<td>{{ cliente.nombre }}</td>
+<td>{{ cliente.apellido_paterno }}</td>
+<td>{{ cliente.apellido_materno }}</td>
+<td>{{ cliente.telefono }}</td>
+<td>{{ cliente.celular }}</td>
+<td>{{ cliente.mail }}</td>
+<td><a href="/clientes/editar/{{ cliente.rut }}"><img class="logo" src="/media/img/iconos/editar.png"></img></a></td>
+<td><a href="#"><img class="logo" src="/media/img/iconos/eliminar.png"></img></a></td>
+</tr>
+{% endfor %}
+</table>
+
+<br>-->
